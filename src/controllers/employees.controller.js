@@ -70,7 +70,7 @@ export const deleteEmployee=async(req,res)=>{
 
     try{
 
-        const [result]=await pool.query("DELETE FROM EMPLOYEE WHERE id=?",[req.params.id])
+        const [result]=await pool.query("DELETE FROM employee WHERE id=?",[req.params.id])
 
         if(result.affectedRows<=0){
             return   res.status(404).json({mesasage:"Employe no found"})
@@ -93,14 +93,14 @@ export const updateEmployee=async(req,res)=>{
     const {name,salary}=req.body;
 
     try{
-    const [result]=await pool.query('UPDATE EMPLOYEE SET NAME=IFNULL(?,name),salary=IFNULL(?,salary) WHERE id=?',[name,salary,id])
+    const [result]=await pool.query('UPDATE employee SET NAME=IFNULL(?,name),salary=IFNULL(?,salary) WHERE id=?',[name,salary,id])
 
     if(result.affectedRows===0) return res.status(404).json({
 
         messagge:"employee no foudn "
     })
 
-    const [rows]= await  pool.query('SELECT *FROM EMPLOYEE WHERE ID=?',[id])
+    const [rows]= await  pool.query('SELECT *FROM employee WHERE ID=?',[id])
     res.json(rows[0]);
 
     }catch(error){
