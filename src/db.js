@@ -10,11 +10,11 @@ import {
 
 
 export const pool= createPool({
-    host:DB_HOST,
-    user:DB_USER,
-    password:DB_PASSWORD,
+    host:'containers-us-west-142.railway.app',
+    user:'root',
+    password:'GG0KA9vDM6zKJeMOtb5i',
     port:5888,
-    database:DB_DATABASE
+    database:'railway'
 })
 
 
